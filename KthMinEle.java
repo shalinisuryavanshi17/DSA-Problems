@@ -50,11 +50,11 @@ class KthMinEle {
     }
     public int partition(int arr[],int start,int end)
     {
-        int pivot=arr[end-1];
+        int pivot=arr[end];
         int p_index=start;
         for (int i = start; i < end; i++) {
 
-            if(arr[i]<pivot)
+            if(arr[i]<=pivot)
             {
                 int temp=arr[p_index];
                 arr[p_index]=arr[i];
@@ -63,8 +63,8 @@ class KthMinEle {
             }
         }
         int temp=arr[p_index];
-        arr[p_index]=arr[end-1];
-        arr[end-1]=temp;
+        arr[p_index]=arr[end];
+        arr[end]=temp;
         return p_index;
     }
 
@@ -81,8 +81,8 @@ class KthMinEle {
             }
             int k = sc.nextInt();
             sc.close();
-            t.Quicksort(arr,0,arr.length);
-            System.out.println("sorted array is");
+            t.Quicksort(arr,0,arr.length-1);
+            System.out.println("sorted array is "+Arrays.toString(arr));
                 System.out.print(arr[k-1]+" ");
             
             
