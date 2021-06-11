@@ -64,7 +64,7 @@ public class CountMinJumps {
     }
     
     public static void main(String[] args) {
-        int arr[] = {1,3,6,1,0,9};
+        int arr[] = {1,4,3,7,1,2,6,7,6,1,0};
         int n = arr.length;
         System.out.print("Minimum number of jumps to reach end is " + minJumps(arr,  n ));
     }
