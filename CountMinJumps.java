@@ -33,39 +33,43 @@ Constraints:
 import java.util.*;
 
 public class CountMinJumps {
-    private static int minJumps(int[] arr, int n)
+    private static int minJumps(int[] arr)
     {
-        // jumps[n-1] will hold the
-        int jumps[] = new int[n];
-        // result
-        int i, j;
- 
-        // if first element is 0,
-        if (n == 0 || arr[0] == 0)
-            return Integer.MAX_VALUE;
-        // end cannot be reached
- 
-        jumps[0] = 0;
- 
-        // Find the minimum number of jumps to reach arr[i]
-        // from arr[0], and assign this value to jumps[i]
-        for (i = 1; i < n; i++) {
-            jumps[i] = Integer.MAX_VALUE;
-            for (j = 0; j < i; j++) {
-                if (i <= j + arr[j]
-                    && jumps[j]
-                           != Integer.MAX_VALUE) {
-                    jumps[i] = Math.min(jumps[i], jumps[j] + 1);
-                    break;
-                }
-            }
+        if(arr.length<=1)
+        {
+            return 0;
         }
-        return jumps[n - 1];
+        if(arr[0]==0)
+        {
+            return Integer.MAX_VALUE;
+        }
+        int maxReach=arr[0];
+        int steps=arr[0];
+        int jumps=1;
+        for (int i = 1; i < arr.length; i++) {
+            if(i==arr.length-1)
+            {
+                return jumps;
+            }
+            maxReach=Math.max(maxReach,i+arr[i]);
+            steps--;
+            if(steps==0)
+            {
+                jumps++;
+                if(i>=maxReach)
+                {
+                    return -1;
+                }
+                steps=maxReach-i;
+            }
+
+        }
+        return jumps;
     }
     
     public static void main(String[] args) {
         int arr[] = {1,4,3,7,1,2,6,7,6,1,0};
         int n = arr.length;
-        System.out.print("Minimum number of jumps to reach end is " + minJumps(arr,  n ));
+        System.out.print("Minimum number of jumps to reach end is " + minJumps(arr));
     }
 }
