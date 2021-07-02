@@ -45,8 +45,8 @@ public class MergeWithoutSpace {
     }
 
     public static void main(String[] args) {
-        int arr1[] = new int[] { 1, 5, 9, 10, 15, 20 };
-        int arr2[] = new int[] { 2, 3, 8, 13 };
+        int arr1[] = new int[] { 10,27,38,43,82 };
+        int arr2[] = new int[] { 3,9 };
 
         merge(arr1, arr2, arr1.length, arr2.length);
         System.out.print("After Merging nFirst Array: ");
